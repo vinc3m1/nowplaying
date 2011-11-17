@@ -2,9 +2,14 @@
 
 <html>
 <head>
-	<title>Playing on Vince's Computer</title>
+	<title>Now Playing on Vince's Computer</title>
 </head>
 <body>
+  <form action="" method="post" accept-charset="utf-8">
+    <button name="submit" value="prev">&larr; Prev</button>
+    <button name="submit" value="play">Play/Pause</button>
+    <button name="submit" value="next">Next &rarr;</button>
+  </form>
   {%- if iTunes.isRunning() and iTunes.playerState() == 1800426320 -%}
     {%- if iTunes.currentPlaylist().name() == "Music" or len(iTunes.currentPlaylist().tracks()) > 200 -%}
       <h2>Current Track: {{ track.artist }} - {{ track.name }}</h2>

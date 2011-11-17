@@ -38,6 +38,23 @@ class nowplaying:
         
         web.header('Content-Type','text/html; charset=utf-8') 
         return render.nowplaying(track=track, iTunes=iTunes, len=len)
+    def POST(self):
+        
+        iTunes = SBApplication.applicationWithBundleIdentifier_("com.apple.iTunes")
+        track = iTunes.currentTrack()
+        
+        i = web.input(submit = None)
+        
+        if i.submit == "play":
+            iTunes.playpause()
+        elif i.submit == "prev":
+            iTunes.nextTrack()
+        elif i.submit == "next":
+            iTunes.previousTrack()
+        
+        web.header('Content-Type','text/html; charset=utf-8') 
+        return render.nowplaying(track=track, iTunes=iTunes, len=len)
+        
 
 if __name__ == "__main__":
     app.run()
