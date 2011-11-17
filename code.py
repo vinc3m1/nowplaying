@@ -47,9 +47,9 @@ class nowplaying:
         
         if i.submit == "play":
             iTunes.playpause()
-        elif i.submit == "prev":
-            iTunes.nextTrack()
         elif i.submit == "next":
+            iTunes.nextTrack()
+        elif i.submit == "prev":
             iTunes.previousTrack()
         
         web.header('Content-Type','text/html; charset=utf-8') 
