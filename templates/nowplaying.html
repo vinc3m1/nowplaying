@@ -2,9 +2,22 @@
 
 <html>
 <head>
-	<title>nowplaying</title>
+	<title>Playing on Vince's Computer</title>
 </head>
 <body>
-  {{ name }}
+  {%- if iTunes.isRunning() and iTunes.playerState() == 1800426320 -%}
+    {%- if iTunes.currentPlaylist().name() == "Music" or len(iTunes.currentPlaylist().tracks()) > 200 -%}
+      <h2>Current Track: {{ track.artist }} - {{ track.name }}</h2>
+    {%- else -%}
+      <ul>
+        <strong>Current Playlist: {{ iTunes.currentPlaylist().name() }}</strong>
+        {%- for tr in iTunes.currentPlaylist().tracks() -%}
+          <li{% if tr.name() == track.name() and tr.artist() == track.artist() %} style="color:blue; font-weight:bold"{% endif %}>{{ tr.artist() }} - {{ tr.name() }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {%- else -%}
+    There is no music playing :(
+  {%- endif -%}
 </body>
 </html>
