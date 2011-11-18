@@ -12,7 +12,7 @@
   </form>
   {%- if iTunes.isRunning() and iTunes.playerState() == 1800426320 -%}
     {%- if iTunes.currentPlaylist().name() == "Music" or len(iTunes.currentPlaylist().tracks()) > 200 -%}
-      <h2>Current Track: {{ track.artist }} - {{ track.name }}</h2>
+      <h2>Current Track: {{ track.artist() }} - {{ track.name() }}</h2>
     {%- else -%}
       <ul>
         <strong>Current Playlist: {{ iTunes.currentPlaylist().name() }}</strong>
