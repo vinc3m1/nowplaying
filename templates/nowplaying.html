@@ -11,7 +11,7 @@
     <button name="submit" value="next">Next &rarr;</button>
   </form>
   {%- if iTunes.isRunning() and iTunes.playerState() == 1800426320 -%}
-    {%- if iTunes.currentPlaylist().name() == "Music" or len(iTunes.currentPlaylist().tracks()) > 200 -%}
+    {%- if iTunes.currentPlaylist().name() == "Music" or len(iTunes.currentPlaylist().tracks()) > 500 -%}
       <h2>Current Track: {{ track.artist() }} - {{ track.name() }}</h2>
     {%- else -%}
       <ul>
